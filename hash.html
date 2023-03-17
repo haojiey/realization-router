@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hash路由</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <a href="#/home">主页</a>
+        <a href="#/about">关于我们</a>
+
+        <p id="intro">我是主页</p>
+    </div>
+</body>
+
+</html>
+<script src="./common/hash.js"></script>
+<script>
+    const Router = new miniHashRouter()
+
+    function changeIntroText(text) {
+        document.getElementById('intro').innerText = text;
+    }
+
+    //添加hash值对应的回调函数
+    Router.router('/home', () => changeIntroText('我是主页'))
+    Router.router('/about', () => changeIntroText('我是关于我们'))
+</script>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>history路由</title>
+</head>
+
+<body>
+    <div style="text-align: center;">
+        <div id="box">
+            <span style="border-bottom: 1px solid blue;color: blue;" data-url="/home">主页</span>
+            <span style="border-bottom: 1px solid blue;color: blue;" data-url="/about">关于我们</span>
+        </div>
+
+        <p id="intro">我是主页</p>
+    </div>
+</body>
+
+</html>
+<script src="./common/history.js"></script>
+<script>
+    const Router = new miniHistoryRouter()
+
+    document.getElementById('box').addEventListener('click', evt => {
+        Router.push(evt.target.dataset.url)
+    })
+
+    function changeIntroText(text) {
+        document.getElementById('intro').innerText = text;
+    }
+
+    Router.router('/home', () => changeIntroText('我是主页'))
+    Router.router('/about', () => changeIntroText('我是关于我们'))
+
+
+</script>
