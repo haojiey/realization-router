@@ -2,15 +2,15 @@ function miniHistoryRouter() {
   // 存储path值与对应回调函数
   this.routes = {};
   // 监听hashchange事件
-  window.addEventListener("popstate", historyChangeCallBack.bind(this));
+  window.addEventListener("popstate", this.historyChangeCallBack);
 
-  function historyChangeCallBack() {
+  this.historyChangeCallBack = function () {
     // 获取当前路由的path值
     const path = window.location.pathname ?? "/";
 
     // 调用回调函数
     this.routes[path]();
-  }
+  };
 
   this.router = (path, callback = function () {}) => {
     this.routes[path] = callback;
@@ -18,11 +18,13 @@ function miniHistoryRouter() {
 
   this.replace = (path) => {
     window.history.replaceState(null, null, path);
-    historyChangeCallBack.call(this);
+    // historyChangeCallBack.call(this);
+    this.historyChangeCallBack()
   };
 
   this.push = (path) => {
     window.history.pushState(null, null, path);
-    historyChangeCallBack.call(this);
+    // historyChangeCallBack.call(this);
+    this.historyChangeCallBack()
   };
 }
