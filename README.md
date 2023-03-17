@@ -103,7 +103,7 @@ history路由基于HTML5引入的一个history API，来看下该API有哪些方
 -   通过`hashChange`监听hash值变化
 -   hash值变化页面不会发生跳转，可以实现局部更新，会在浏览器历史栈添加一个记录
 
-**test.js**
+**hash.js**
 
 ```
 function miniHashRouter() {
@@ -127,7 +127,7 @@ function miniHashRouter() {
 }
 ```
 
-**html**
+**hash.html**
 
 ```
 <body>
@@ -167,7 +167,7 @@ function miniHashRouter() {
 -   但是`history.pushState()` 与 `history.replaceState()`不会被监听
 -   基于`history API`的几个方法
 
-**test.js**
+**history.js**
 
 ```
 function miniHistoryRouter() {
@@ -200,7 +200,7 @@ function miniHistoryRouter() {
 }
 ```
 
-**html**
+**history.html**
 
 ```
 <body>
